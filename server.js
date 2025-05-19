@@ -20,15 +20,14 @@ createServer({
         this.logging = false
 
         this.get("/vans", (schema, request) => {
-            return new Response(400, {}, {error: "Error fetching data"})
-            // return schema.vans.all()
+            return schema.vans.all()
         })
 
         this.get("/vans/:id", (schema, request) => {
             const id = request.params.id
             return schema.vans.find(id)
         })
- 
+
         this.get("/host/vans", (schema, request) => {
             // Hard-code the hostId for now
             return schema.vans.where({ hostId: "123" })
